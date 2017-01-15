@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,7 @@ namespace FlintsToolkit.ViewModel
                 RaisePropertyChanged("IsBusy");
             }
         }
+
+        public RelayCommand Loaded { get; set; }
     }
 }

@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:conv="clr-namespace:FlintsToolkit.Tools.Converters"
              xmlns:local="clr-namespace:FlintsToolkit.Modules.Tasks.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
              mc:Ignorable="d" DataContext="{Binding TaskOverview, Mode=OneWay, Source={StaticResource Locator}}">
     <UserControl.Resources>
         <conv:ShortenerConverter x:Key="ShortenerConverter"/>

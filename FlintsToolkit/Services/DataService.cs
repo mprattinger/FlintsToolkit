@@ -25,6 +25,8 @@ namespace FlintsToolkit.Services
             t = new TaskItem { TaskId = new Guid(), Title = "One with a very long title and some other stuff", Description = "Das ist mein erster Task" };
             ret.Add(t);
 
+            await Task.Delay(500);
+
             return ret;
         }
     }

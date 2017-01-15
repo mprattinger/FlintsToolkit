@@ -17,7 +17,18 @@ namespace FlintsToolkit.Modules.Tasks.ViewModels
         private IDataService _dataService;
 
         public ObservableCollection<DropdownEntry> TaskState { get; set; }
-        public ObservableCollection<TaskItem> Tasks { get; set; }
+
+        private ObservableCollection<TaskItem> _tasks;
+        public ObservableCollection<TaskItem> Tasks
+        {
+            get { return _tasks; }
+            set
+            {
+                if (_tasks == value) return;
+                _tasks = value;
+                RaisePropertyChanged("Tasks");
+            }
+        }
 
         private TaskItem _currentTask;
         public TaskItem CurrentTask
@@ -26,7 +37,6 @@ namespace FlintsToolkit.Modules.Tasks.ViewModels
             set
             {
                 if (_currentTask == value) return;
-                var old = _currentTask;
                 _currentTask = value;
                 RaisePropertyChanged("CurrentTask");
             }
@@ -38,19 +48,25 @@ namespace FlintsToolkit.Modules.Tasks.ViewModels
         public TaskOverviewViewModel(IDataService dataService) : base()
         {
             _dataService = dataService;
+            Tasks = new ObservableCollection<TaskItem>();
 
-            NewTask = new RelayCommand(() => {
-                
+            Loaded = new RelayCommand(async () =>
+            {
+                await loadTasks();
             });
 
-            IsBusy = true;
-            loadTasks().Wait();
-            IsBusy = false;
+            NewTask = new RelayCommand(() =>
+            {
+
+            });
+
         }
 
         private async Task loadTasks()
         {
+            IsBusy = true;
             Tasks = new ObservableCollection<TaskItem>(await _dataService.LoadTasksFromDb());
+            IsBusy = false;
         }
     }
 }

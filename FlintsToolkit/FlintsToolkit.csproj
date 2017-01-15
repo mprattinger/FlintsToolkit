@@ -93,6 +93,7 @@
     <Compile Include="Tools\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Tools\Converters\ShortenerConverter.cs" />
     <Compile Include="Tools\Extensions\StringExtensions.cs" />
+    <Compile Include="ViewModel\ApplicationViewModel.cs" />
     <Compile Include="ViewModel\FTViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
